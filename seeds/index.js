@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const cities = require('./cities')
-const {places,descriptors} = require('./seedHelpers')
 const Restaurant = require('../models/restaurant')
 require("dotenv").config();
 const uri = 'mongodb://localhost:27017/restaurant_review' ;
@@ -22,7 +21,7 @@ const sample = array => array[Math.floor(Math.random()*array.length)]
 const seedDB = async ()=>{
     await Restaurant.deleteMany({});
     var count = 1;
-    for(let i = 0; i < 100; i++){
+    for(let i = 0; i < 30; i++){
         const random1000 = Math.floor(Math.random()*1000);
         const price = Math.floor(Math.random()*200)+100;
         const restaurant = new Restaurant({
@@ -32,13 +31,13 @@ const seedDB = async ()=>{
             images:[
                 {
                   
-                  url: 'https://res.cloudinary.com/diyscwbit/image/upload/v1616073543/Camping-Grounds/behhnatqgsz8ipxuagsw.jpg',
-                  filename: 'Camping-Grounds/behhnatqgsz8ipxuagsw'
+                  url: 'https://res.cloudinary.com/diyscwbit/image/upload/v1616791383/restaurant_review/pj7qbt5tdbcfcbta4yol_c7mwgc.jpg',
+                  filename: 'restaurant_review/pj7qbt5tdbcfcbta4yol_c7mwgc'
                 },
                 {
                 
-                    url: 'https://res.cloudinary.com/diyscwbit/image/upload/v1616073542/Camping-Grounds/kt6dn8qzkrjofaklmfdg.jpg',
-                    filename: 'Camping-Grounds/kt6dn8qzkrjofaklmfdg'
+                    url: 'https://res.cloudinary.com/diyscwbit/image/upload/v1616791491/restaurant_review/photo-1554118811-1e0d58224f24_anbfmk.jpg',
+                    filename: 'restaurant_review/photo-1554118811-1e0d58224f24_anbfmk'
                   }
               ],
             description:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta atque earum blanditiis, similique odit nobis magni? Quia adipisci voluptatum, eum incidunt quae consequuntur. Quo tenetur totam beatae laborum aliquid. Illum.',

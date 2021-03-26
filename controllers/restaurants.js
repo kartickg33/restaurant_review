@@ -8,7 +8,7 @@ const geocoder = mbxGeocoding({accessToken:mapBoxToken});
 
 module.exports.index = async (req, res) => {
     const restaurants = await Restaurant.find({});
-    res.render('restaurants/index', { restaurants })
+    res.render('restaurants/index', { restaurants})
 }
 
 module.exports.newRestaurant = (req, res) => {
@@ -29,7 +29,6 @@ module.exports.createRestaurant = async (req, res, next) => {
     req.flash('success', 'Restaurant added successfully !');
     res.redirect(`/restaurants/${restaurant._id}`)
 }
-
 module.exports.displayRestaurant = async (req, res,) => {
     const restaurant = await Restaurant.findById(req.params.id).populate({
         path: 'reviews',

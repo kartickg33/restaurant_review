@@ -1,26 +1,32 @@
 <% layout('layouts/boilerplate') %>
 <link rel="stylesheet" href="/stylesheets/index.css">
-<div id="cluster-map" class="mb-3">
 
-</div>
+<!-- </div> -->
 
 <!-- 
 <!-- <h1>All Destinations</h1> -->
-<div>
+<!-- <div> -->
     <!-- <a href="/restaurants/new">Add Restaurant</a> -->
-</div>
-<ul>
-    <% for(let restaurant of restaurants){%>
-        <div class="card mb-3 cd">
-            <div class="row">
-                <div class="col-md-4">
+<!-- </div> -->
+<!-- <ul> -->
+    <h1>Restaurants</h1>
+    <br>
+    <% for(let restaurant of restaurants){%> 
+            <div class="grid-container">
+                <div class="grid-item">
+                    <a class="" href="/restaurants/<%= restaurant._id%>">
                     <% if(restaurant.images.length) {%> 
-                        <img class="img-fluid" alt="" src="<%= restaurant.images[0].url%>">
+                        <img class="img-fluid" alt="" src="<%= restaurant.images[0].url%>"><caption><p class=""><%= restaurant.title %> </p></caption>
                     <%}else {%>
                         <img class="img-fluid" alt="" src="https://res.cloudinary.com/diyscwbit/image/upload/v1616073543/Camping-Grounds/behhnatqgsz8ipxuagsw.jpg">
-                    <%}%>     
+                    <%}%>
+                    </a>
+                    <!-- <a class="btn btn-primary" href="/restaurants/<%= restaurant._id%>">View Restaurant </a>      -->
                 </div>
-                <div class="col-md-8">
+                <!-- <div>
+                    <p class=""><%= restaurant.title %> </p>
+                </div> -->
+                <!-- <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title"><%= restaurant.title %> </h5>
                         <p class="card-text"><%=restaurant.description %></p>
@@ -28,12 +34,14 @@
                         <p class="card-text"><small class="text-white"><%= restaurant.location%></small></p>
                         <a class="btn btn-primary" href="/restaurants/<%= restaurant._id%>">View Restaurant </a>
                     </div>
-                </div>
+                </div> -->
             </div>
-        </div>
-        <%} %>
-<script>
-    const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
-    const restaurants = {features: <%- JSON.stringify(restaurants)%>}
-</script>
-<script src="/javascripts/clustermap.js"></script>
+    <%} %>
+<!-- </ul> -->
+<!-- <div>
+    <button id="prev" class="btn btn-secondary" onclick="previous()">Previous</button>
+    <button id="next" class="btn btn-secondary" onclick="next()">Next</button>
+</div> -->
+<!-- <script>
+
+</script> -->
