@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+    <h1 class="text-center">Edit Restaurant</h1>
+    <div class="col-md-6 offset-md-3">
+        <form action="/restaurants/<%= restaurant._id%>?_method=PUT" method="POST" class="validated-form" novalidate enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class = "form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="restaurant[title]" value="<%= restaurant.title%>" required>
+                <div class="valid-feedback">Spot On !</div>
+                <div class="invalid-feedback">Please enter Restaurant Title</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="location">Location</label>
+                <input class="form-control" type="text" id="location" name="restaurant[location]" value="<%= restaurant.location%>"required>
+                <div class="valid-feedback">Spot On !</div>
+                <div class="invalid-feedback">Please enter Restaurant Location</div>
+            </div>
+            <!-- <div class="mb-3">
+                <label class="form-label" for="image">Add Image</label>
+                <input type="file" name="image" id="image" multiple>
+                <div class="valid-feedback">Spot On !</div>
+                <div class="invalid-feedback">Please enter Restaurant Image Url</div>
+            </div> -->
+            <div class="mb-3">
+                <label class="form-label" for="price">Restaurant Price</label>
+                <div class="input-group">
+                    <span class="input-group-text" id="price-label">&#8377;</span>
+                <input type="text" class="form-control" placeholder="0.00" id="price" aria-label="price" aria-describedby="basic-addon1" name="restaurant[price]" value="<%= restaurant.price%>" required>
+                <div class="valid-feedback">Spot On !</div>
+                <div class="invalid-feedback">Please enter Restaurant Price / Person</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="description">Description</label>
+                <textarea class="form-control" type="text" id="description" name="restaurant[description]" required><%= restaurant.description%></textarea>
+                <div class="valid-feedback">Spot On !</div>
+                <div class="invalid-feedback">Please enter Restaurant Description</div>
+            </div>
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="image" name="image" multiple>
+                <label class="input-group-text custom-file-label" for="image">Add</label>
+              </div>
+              <div class="mb-3">
+                  <% restaurant.images.forEach(function(img,i){ %>
+                    <img src="<%= img.thumbnail%>" class="img-thumbnail" alt="">
+                    <div class="form-check-inline">
+                        <input type="checkbox" name="deleteImages[]" value="<%=img.filename%>" id="image-<%=i%>">
+                    </div>
+                    <label for="image-<%=i%>">Remove</label>
+                  <% }) %> 
+              </div>
+            <div class="mb-3">
+                <button class="btn btn-info">Update <%= restaurant.title %> </button>
+            </div>
+        </form>
+        <a class="btn btn-sm btn-secondary mb-3"  href="/restaurants/<%=restaurant._id %>">Back to Restaurant</a>
+    </div>
+</div>
+   
