@@ -21,7 +21,7 @@ const sample = array => array[Math.floor(Math.random()*array.length)]
 const seedDB = async ()=>{
     await Restaurant.deleteMany({});
     var count = 1;
-    for(let i = 0; i < 30; i++){
+    for(let i = 0; i < 90; i++){
         const random1000 = Math.floor(Math.random()*1000);
         const price = Math.floor(Math.random()*200)+100;
         const restaurant = new Restaurant({
@@ -29,16 +29,20 @@ const seedDB = async ()=>{
             location:`${cities[random1000].city},${cities[random1000].state}`,
             title:`Sample Restaurant ${count++}`,
             images:[
-                {
+                    {
+                        url: 'https://res.cloudinary.com/diyscwbit/image/upload/v1616834835/restaurant_review/display_img_e0nphb.jpg',
+                        filename:'restaurant_review/display_img_e0nphb'
+                    }
+                // {
                   
-                  url: 'https://res.cloudinary.com/diyscwbit/image/upload/v1616791383/restaurant_review/pj7qbt5tdbcfcbta4yol_c7mwgc.jpg',
-                  filename: 'restaurant_review/pj7qbt5tdbcfcbta4yol_c7mwgc'
-                },
-                {
+                //   url: 'https://res.cloudinary.com/diyscwbit/image/upload/v1616791383/restaurant_review/pj7qbt5tdbcfcbta4yol_c7mwgc.jpg',
+                //   filename: 'restaurant_review/pj7qbt5tdbcfcbta4yol_c7mwgc'
+                // },
+                // {
                 
-                    url: 'https://res.cloudinary.com/diyscwbit/image/upload/v1616791491/restaurant_review/photo-1554118811-1e0d58224f24_anbfmk.jpg',
-                    filename: 'restaurant_review/photo-1554118811-1e0d58224f24_anbfmk'
-                  }
+                //     url: 'https://res.cloudinary.com/diyscwbit/image/upload/v1616791491/restaurant_review/photo-1554118811-1e0d58224f24_anbfmk.jpg',
+                //     filename: 'restaurant_review/photo-1554118811-1e0d58224f24_anbfmk'
+                //   }
               ],
             description:'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta atque earum blanditiis, similique odit nobis magni? Quia adipisci voluptatum, eum incidunt quae consequuntur. Quo tenetur totam beatae laborum aliquid. Illum.',
             price,

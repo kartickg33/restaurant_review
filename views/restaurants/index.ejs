@@ -9,20 +9,21 @@
     <!-- <a href="/restaurants/new">Add Restaurant</a> -->
 <!-- </div> -->
 <!-- <ul> -->
-    <h1>Restaurants</h1>
-    <br>
+    <h1>Restaurants</h1><br>
+    <div id="list"></div>
     <% for(let restaurant of restaurants){%> 
-            <div class="grid-container">
+            <!-- <div class="grid-container">
                 <div class="grid-item">
                     <a class="" href="/restaurants/<%= restaurant._id%>">
                     <% if(restaurant.images.length) {%> 
-                        <img class="img-fluid" alt="" src="<%= restaurant.images[0].url%>"><caption><p class=""><%= restaurant.title %> </p></caption>
+                        <img class="img-fluid" alt="" src="<%= restaurant.images[0].url%>">
                     <%}else {%>
                         <img class="img-fluid" alt="" src="https://res.cloudinary.com/diyscwbit/image/upload/v1616073543/Camping-Grounds/behhnatqgsz8ipxuagsw.jpg">
                     <%}%>
                     </a>
-                    <!-- <a class="btn btn-primary" href="/restaurants/<%= restaurant._id%>">View Restaurant </a>      -->
-                </div>
+                    <!-- <a class="btn btn-primary" href="/restaurants/<%= restaurant._id%>">View Restaurant </a>      
+                    <p><%= restaurant.title %> </p>
+                </div> -->
                 <!-- <div>
                     <p class=""><%= restaurant.title %> </p>
                 </div> -->
@@ -38,10 +39,13 @@
             </div>
     <%} %>
 <!-- </ul> -->
-<!-- <div>
-    <button id="prev" class="btn btn-secondary" onclick="previous()">Previous</button>
-    <button id="next" class="btn btn-secondary" onclick="next()">Next</button>
-</div> -->
-<!-- <script>
+<div id="pl" class="justify-content-center">
+    <button id="prev" class="btn btn-secondary" onclick="previousPage()">Previous</button>
+    <span id="page" style="color:snow;"></span>
+    <button id="next" class="btn btn-secondary" onclick="nextPage()">Next</button>
+</div>
 
-</script> -->
+<script>
+    const restaurants = <%-JSON.stringify(restaurants) %>;
+</script>
+<script src="/javascripts/page.js"></script>
