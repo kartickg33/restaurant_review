@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params:{
-        folder: 'Camping-Grounds',
+        folder: 'restaurant_review',
         allowedFormats:['jped','png','jpg']
     }
 });

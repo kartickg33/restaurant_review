@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const cities = require('./cities')
 const Restaurant = require('../models/restaurant')
 require("dotenv").config();
-const uri = 'mongodb://localhost:27017/restaurant_review' ;
+const uri = process.env.MONGODB_URI ;
 
 mongoose.connect(uri,{
     useNewUrlParser:true,
@@ -25,7 +25,7 @@ const seedDB = async ()=>{
         const random1000 = Math.floor(Math.random()*1000);
         const price = Math.floor(Math.random()*200)+100;
         const restaurant = new Restaurant({
-            author:'6058d81e55fb0275bcce6176',
+            author:'6060397d50513e70a89c2c76',
             location:`${cities[random1000].city},${cities[random1000].state}`,
             title:`Sample Restaurant ${count++}`,
             images:[

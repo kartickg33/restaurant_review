@@ -19,7 +19,7 @@ if(process.env.NODE_ENV!=="production"){
 }
 
 
-const uri = 'mongodb://localhost:27017/restaurant_review';
+const uri = process.env.MONGODB_URI;
 
 const userRoutes = require('./routes/users');
 const restaurantRoutes = require('./routes/restaurants');
