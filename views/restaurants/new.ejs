@@ -6,13 +6,13 @@
         <form action="/restaurants" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
             <div class="mb-3">
                 <label class = "form-label" for="title">Title</label>
-                <input class="form-control" type="text" id="title" name="restaurant[title]" required>
+                <input class="form-control" type="text" id="title" name="restaurant[title]" placeholder="Restaurant Title" required>
                 <div class="valid-feedback">Spot On !</div>
                 <div class="invalid-feedback">Please enter Restaurant Title</div>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="location">Location</label>
-                <input class="form-control" type="text" id="location" name="restaurant[location]" required>
+                <input class="form-control" type="text" id="location" name="restaurant[location]" placeholder="Restaurant Location" required>
                 <div class="valid-feedback">Spot On !</div>
                 <div class="invalid-feedback">Please enter Restaurant Location</div>
             </div>
@@ -40,14 +40,20 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="description">Description</label>
-                <textarea class="form-control" type="text" id="description" name="restaurant[description]" required></textarea>
+                <textarea class="form-control" type="text" id="description" name="restaurant[description]" required>Restaurant Description</textarea>
                 <div class="valid-feedback">Spot On !</div>
                 <div class="invalid-feedback">Please enter Restaurant Description</div>
             </div>
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="image" name="image" multiple>
                 <label class="input-group-text custom-file-label" for="image">Upload</label>
-              </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="active">Open Hours</label>
+                <input type="text" class="form-control" id="active" name="restaurant[active]" placeholder="Hours of Operation" required>
+                <div class="valid-feedback">Spot On !</div>
+                <div class="invalid-feedback">Please enter the hours of operation</div>
+            </div>
             <div class="mb-3">
                 <button class="btn btn-success">Add Restaurant</button>
             </div>

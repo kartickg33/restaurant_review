@@ -1,4 +1,5 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/edit.css">
 
 <div class="row">
     <h1 class="text-center">Edit Restaurant</h1>
@@ -37,6 +38,12 @@
                 <div class="valid-feedback">Spot On !</div>
                 <div class="invalid-feedback">Please enter Restaurant Description</div>
             </div>
+            <div class="mb-3">
+                <label class="form-label" for="active">Open Hours</label>
+                <input type="text" class="form-control" id="active" name="restaurant[active]" value="<%= restaurant.active %> " required>
+                <div class="valid-feedback">Spot On !</div>
+                <div class="invalid-feedback">Please enter the hours of operation</div>
+            </div>
             <div class="input-group mb-3">
                 <input type="file" class="form-control" id="image" name="image" multiple>
                 <label class="input-group-text custom-file-label" for="image">Add</label>
@@ -51,10 +58,10 @@
                   <% }) %> 
               </div>
             <div class="mb-3">
-                <button class="btn btn-info">Update <%= restaurant.title %> </button>
+                <button class="btn btn-primary">Update <%= restaurant.title %> </button>
             </div>
         </form>
-        <a class="btn btn-sm btn-secondary mb-3"  href="/restaurants/<%=restaurant._id %>">Back to Restaurant</a>
+        <a role="button" class="btn btn-primary mb-3"  href="/restaurants/<%=restaurant._id %>">Back to Restaurant</a>
     </div>
 </div>
    

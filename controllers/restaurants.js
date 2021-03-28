@@ -23,7 +23,7 @@ module.exports.createRestaurant = async (req, res, next) => {
     const restaurant = new Restaurant(req.body.restaurant);
     restaurant.geometry = geoData.body.features[0].geometry;
     restaurant.images = req.files.map(f=>({url:f.path,filename:f.filename}))
-    restaurant.author = req.user._id;
+    restaurant.author = req.user._id; 
     await restaurant.save();
     console.log(restaurant)
     req.flash('success', 'Restaurant added successfully !');

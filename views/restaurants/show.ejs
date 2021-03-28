@@ -1,6 +1,7 @@
 <% layout('layouts/boilerplate') %>
 <link rel="stylesheet" href="/stylesheets/stars.css">
 <link rel="stylesheet" href="/stylesheets/mp.css">
+<link rel="stylesheet" href="/stylesheets/display.css">
 
 <div class="row">
   <div class="col-6">
@@ -8,7 +9,7 @@
       <div class="carousel-inner">
         <% restaurant.images.forEach((img,i)=>{ %> 
         <div class="carousel-item <%= i===0 ? 'active' : ''%>">
-          <img src="<%= img.url%>" class="d-block w-100" alt="">
+          <img src="<%= img.url%>" class="d-block" alt="">
         </div>
         <% })%> 
       </div>
@@ -23,17 +24,61 @@
       </a>
       <% }%> 
     </div>
-    <div class="card mb-3">
+    <!-- <div class="card">
         <div class="card-body">
           <h5 class="card-title"><%= restaurant.title%></h5>
           <p class="card-text"><%= restaurant.description%></p>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-text-muted"><%= restaurant.location%></li>
-          <li class="list-group-item">Open Hours: <%= restaurant.active%></li>
-          <li class="list-group-item">Added By <%= restaurant.author.username%> </li>
-          <li class="list-group-item">&#8377;<%= restaurant.price%>/person</li>
-        </ul>
+        <div>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          </svg> <%= restaurant.location%></p>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal" viewBox="0 0 16 16">
+            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+            <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+          </svg> Open Hours: <%= restaurant.active%></p>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+          </svg> Added By <%= restaurant.author.username%> </p>
+          <p>&#8377; <%= restaurant.price%>/person</p>
+        </div>
+        <% if(currentUser && restaurant.author.equals(currentUser._id)){ %> 
+          <div class="card-body">
+              <a class="card-link btn btn-info" href="/restaurants/<%= restaurant._id %>/edit">Edit</a>
+              <form class="d-inline" action="/restaurants/<%=restaurant._id%>?_method=DELETE" method="POST">
+                  <button class="btn btn-danger">Delete</button>
+              </form>
+          </div>
+        <% } %> 
+        <div class="card-footer text-muted">
+            2 days ago
+        </div>
+      </div> -->
+      </div> 
+      <div id="map"></div>
+      <div class="mt-5">
+        <button class="btn btn-primary" id="details" onclick="toggle()"></button>
+      </div>
+      <div class="card" id="toggle">
+        <div class="card-body">
+          <h5 class="card-title"><%= restaurant.title%></h5>
+          <p class="card-text"><%= restaurant.description%></p>
+        </div>
+        <div>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+          </svg> <%= restaurant.location%></p>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal" viewBox="0 0 16 16">
+            <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+            <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+          </svg> Open Hours: <%= restaurant.active%></p>
+          <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+          </svg> Added By <%= restaurant.author.username%> </p>
+          <p>&#8377; <%= restaurant.price%>/person</p>
+        </div>
         <% if(currentUser && restaurant.author.equals(currentUser._id)){ %> 
           <div class="card-body">
               <a class="card-link btn btn-info" href="/restaurants/<%= restaurant._id %>/edit">Edit</a>
@@ -46,12 +91,11 @@
             2 days ago
         </div>
       </div>
-      </div>
-      <div class="col-6">
-        <div id="map"></div>
+        <!-- <div id="map"></div> -->
         <br>
-        <% if(currentUser){ %> 
-        <h2>Leave a Review</h2>
+        <% if(currentUser){ %>
+        <div class="mt-5">
+        <h2 style="color: snow;">Rate Your Experience</h2>
             <form action="/restaurants/<%=restaurant._id %>/reviews" method="POST" class="validated-form mb-3" novalidate>
               <div class="mb-3">
               <fieldset class="starability-basic">
@@ -68,10 +112,10 @@
                 <label for="first-rate5" title="Amazing">5 stars</label>
               </fieldset>
             </div>
-              <div class="mb-3">
-                <label class="form-label" for="body"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" class="bi bi-textarea" viewBox="0 0 16 16">
+              <div class="mb-2">
+                <!-- <label class="form-label" for="body"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="currentColor" class="bi bi-textarea" viewBox="0 0 16 16">
                   <path d="M1.5 2.5A1.5 1.5 0 0 1 3 1h10a1.5 1.5 0 0 1 1.5 1.5v3.563a2 2 0 0 1 0 3.874V13.5A1.5 1.5 0 0 1 13 15H3a1.5 1.5 0 0 1-1.5-1.5V9.937a2 2 0 0 1 0-3.874V2.5zm1 3.563a2 2 0 0 1 0 3.874V13.5a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V9.937a2 2 0 0 1 0-3.874V2.5A.5.5 0 0 0 13 2H3a.5.5 0 0 0-.5.5v3.563zM2 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
-                </svg></label>
+                </svg></label> -->
                 <textarea class="form-control" name="review[body]" id="body" cols="30" rows="5" required>Share your experience...</textarea>
                 <div class="valid-feedback">Spot On !</div>
                       <div class="invalid-feedback">Please enter Restaurant Review</div>
@@ -92,7 +136,8 @@
                     </form>
                   </div>          
                 </div>
-              <% } %>   
+              <% } %> 
+            </div>   
       </div>
 </div>
 

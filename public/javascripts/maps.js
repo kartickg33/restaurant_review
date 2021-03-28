@@ -18,3 +18,32 @@ new mapboxgl.Marker()
         )
     )
     .addTo(map)
+
+
+var about_btn = document.getElementById("toggle");
+var btn = document.getElementById("details");
+function hide(){
+    about_btn.style.display = "none";
+    btn.innerHTML = "Show Details";
+}
+function show(){
+    about_btn.style.display = "block";
+    btn.innerHTML = "Hide Details";
+}
+
+var count = 0;
+
+function toggle(){
+    if(count%2==0){
+        count++;
+        hide();
+    }
+    else{
+        count++;
+        show();
+    }
+}
+function load(){
+    toggle();
+}
+window.onload = load();
