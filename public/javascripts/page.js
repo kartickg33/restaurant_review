@@ -49,42 +49,23 @@ check();
 function drawList() {
     document.getElementById("list").innerHTML = "";
     let div = document.createElement('div');
-    div.className = 'container-fluid';
-    div.classList.add('grid');
+    div.className = ('container-fluid');
     let name = document.createElement('div');
-    name.className = 'row row-cols-5';
+    name.className = 'row row-cols-auto';
     
-    for (let r = 0; r < pageList.length; r++)
-    {
-        let obj = pageList[r];
-        // let div = document.createElement('div');
-        // div.className = 'container';
-        // let name = document.createElement('div');
-        // name.className = 'row-cols-5';
+     for (let r = 0; r < pageList.length; r++)
+     {
         let item = document.createElement('div');
         item.className = 'col';
-        let link = document.createElement('a');
-        link.innerHTML = `<a href = '/restaurants/${obj._id}'> <img class = "img-fluid" src='${obj.images[0].url}'/><p>${obj.title}</p></a>`;
-        //link.className = 'col';
-        //let profilepic = document.createElement('div');
-        //name.innerHTML = obj.name;
-        // let image = document.createElement('img')
-        // image.innerHTML = `<img src='${obj.images[0].url}'/>`;
-        // image.className = 'img-fluid';
-       /* let caption = document.createElement('div');
-        let para = document.createElement('p');
-        para.innerHTML = `<p>${obj.title}</p>`;
-        caption.appendChild(para);
-        */
-        //div.style.justifyContent = 'center';
-        //para.style.textAlign = 'center';
-        div.appendChild(name);
-        name.appendChild(item);
-        item.appendChild(link);
-        //name.appendChild(link);
-        //link.appendChild(caption);
-        document.getElementById("list").appendChild(div);
-    }
+         let obj = pageList[r];
+         let link = document.createElement('a');
+         link.classList.add('content');
+         link.innerHTML = `<a href = '/restaurants/${obj._id}'> <img class = "img-fluid" src='${obj.images[0].url}'/><p>${obj.title}</p></a>`;
+         div.appendChild(name);
+         name.appendChild(item);
+         item.appendChild(link);
+         document.getElementById("list").appendChild(div);
+     }
 }
 
 function check() {
@@ -95,7 +76,7 @@ function check() {
 }
 
 function pageNo(){
-    document.getElementById('page').innerHTML = `Page ${currentPage} of ${numberOfPages}`;
+    document.getElementById('page').innerHTML = `  Page ${currentPage} of ${numberOfPages}  `;
 }
 function load() {
     makeList();

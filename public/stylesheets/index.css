@@ -9,19 +9,24 @@ body{
     image-rendering: optimizeQuality;
     background-attachment: fixed;
 }
-
-/* .grid{
-    max-width: 1200px;
-} */
-
+.row{
+    margin-left:21.75px;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    max-width: 1220px;
+}
 .nav-link:hover{
     border-bottom:0.25rem solid rgba(0, 0, 255, 0.692);
 }
 h1{
-    color:snow;
+    margin-left:28px;
+    margin-right:52px;
     text-align: center;
+    color:snow;
     font-weight: bold;
     margin-bottom: 10px;
+    justify-content: space-around;
 }
 a[href="/restaurants"]{
     color:white;
@@ -42,7 +47,7 @@ p{
     color:snow;
     font-weight: bold;
     text-align: center;
-   margin-right:58px; 
+   /*margin-right:58px; */ 
     margin-bottom:14px;
 }
 p:hover{
@@ -53,6 +58,11 @@ img{
     width:220px; 
     /*background: linear-gradient(darkred,darkblue,black);*/
 }
+/* @media (min-width:300px) (max-width:600px){
+    .row-cols-5{
+        width:100%;
+    }
+} */
 a{
     text-decoration: none;
 }
@@ -83,30 +93,26 @@ a img{
     image-rendering: optimizeQuality;
 }
 
-/*
-.grid-item:hover{
-    border: 3px solid darkred;
-    transition: all .2s ease-in-out;
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    color: red;
-    /* background-color: #485461;
-    background-image: linear-gradient(315deg, #485461 0%, #28313b 74%); *
-}
-*/
+ #pl{
+    margin-top: 5px;
+    display:flex;
+    justify-content: space-between;
+} 
 
-.btn-secondary{
+#next{
     align-self: center;
     /* next button */
     border:2px solid snow;
     color:snow;
     background-color: transparent;
     width:77px;
+    margin-left:5px;
+    display: flex;
+    justify-content: space-around;
 }
 
 
-.btn-primary{
+#prev{
     /*previous button */
     align-items: center;
     border:2px solid snow;
@@ -114,40 +120,27 @@ a img{
     color:snow;
     background-color: transparent;
     width:85px;
+    margin-right:5px;
+    display:flex;
+    justify-content: space-around;
 }
-span{
+#prev:hover{
+    background-color: darkred;
+}
+#page{
+    margin-top:7px;
     font-weight: bold;
+    display: flex;
+    justify-content: space-evenly;
 }
 footer{
     display:flex;
     justify-content: center;
 }
-.btn:hover{
+#next:hover{
     background-color:darkred;
 }
-/*
-.col:hover{
-    /*border: 3px solid darkred; *
-    transition: all .4s ease-in-out;
-    -webkit-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
-    color: red;
 
-}*/
-/* .container{
-    max-width:1200px;
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(900px,1fr));
-} */
-/*.container-fluid{
-    /* max-width:1250px;
-    margin-right:35px; *
-}
-*/
-/* .col{
-    grid-gap: 1.5 fr;
-} */
 img:hover{
     border: 3px solid darkred;
     transition: all .4s ease-in; 
@@ -156,4 +149,9 @@ img:hover{
     /*-webkit-transition-duration:0.4s;
     -webkit-transition-timing-function: ease-in-ease-out;
 */
+}
+
+
+*{
+    box-sizing: border-box;
 }
