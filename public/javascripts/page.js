@@ -49,7 +49,8 @@ check();
 function drawList() {
     document.getElementById("list").innerHTML = "";
     let div = document.createElement('div');
-    div.className = 'container';
+    div.className = 'container-fluid';
+    div.classList.add('grid');
     let name = document.createElement('div');
     name.className = 'row row-cols-5';
     
