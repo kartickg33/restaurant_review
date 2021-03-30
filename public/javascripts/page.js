@@ -48,26 +48,40 @@ check();
 
 function drawList() {
     document.getElementById("list").innerHTML = "";
+    let div = document.createElement('div');
+    div.className = 'container';
+    let name = document.createElement('div');
+    name.className = 'row row-cols-5';
     
     for (let r = 0; r < pageList.length; r++)
     {
         let obj = pageList[r];
-        let div = document.createElement('div');
-        div.className = 'grid-container';
-        let name = document.createElement('div');
-        name.className = 'grid-item';
+        // let div = document.createElement('div');
+        // div.className = 'container';
+        // let name = document.createElement('div');
+        // name.className = 'row-cols-5';
+        let item = document.createElement('div');
+        item.className = 'col';
         let link = document.createElement('a');
-        link.innerHTML = `<a href = '/restaurants/${obj._id}'> <img class = "img-fluid" src='${obj.images[0].url}'/></a>`;
+        link.innerHTML = `<a href = '/restaurants/${obj._id}'> <img class = "img-fluid" src='${obj.images[0].url}'/><p>${obj.title}</p></a>`;
+        //link.className = 'col';
         //let profilepic = document.createElement('div');
         //name.innerHTML = obj.name;
         // let image = document.createElement('img')
         // image.innerHTML = `<img src='${obj.images[0].url}'/>`;
         // image.className = 'img-fluid';
+       /* let caption = document.createElement('div');
         let para = document.createElement('p');
         para.innerHTML = `<p>${obj.title}</p>`;
+        caption.appendChild(para);
+        */
+        //div.style.justifyContent = 'center';
+        //para.style.textAlign = 'center';
         div.appendChild(name);
-        name.appendChild(link);
-        name.appendChild(para);
+        name.appendChild(item);
+        item.appendChild(link);
+        //name.appendChild(link);
+        //link.appendChild(caption);
         document.getElementById("list").appendChild(div);
     }
 }

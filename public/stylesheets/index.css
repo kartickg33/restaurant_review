@@ -1,6 +1,6 @@
 body{
     background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.4)),
-    url("bg_dark.webp");
+    url("https://res.cloudinary.com/diyscwbit/image/upload/v1617113091/restaurant_review/bg_dark_iyv5u9.webp");
     /* background-color: #485461;
     background-image: linear-gradient(315deg, #485461 0%, #28313b 74%); */
     background-size: cover;
@@ -43,9 +43,17 @@ h5{
     color:snow;
 }
 p{
-    font-size: small;
+    margin-top:9px;
+    font-size:small;
+    /*font-size: small; */
     color:snow;
     font-weight: bold;
+    text-align: center;
+    margin-right:58px;
+    margin-bottom:14px;
+}
+p:hover{
+    color:red;
 }
 img{
     height:100px;
@@ -55,17 +63,17 @@ img{
 a{
     text-decoration: none;
 }
-.grid-container {
+/* .grid-container {
     display: inline-grid;
     grid-template-columns: auto auto auto;
     align-items: center;
     overflow:hidden;
-    /* margin-left: 15px; */
+    /* margin-left: 15px; 
   }
 
   .grid-item {
     border: 3px solid snow;
-    /*padding: 10px; */
+    /*padding: 10px; 
     margin-top: 15px;
     margin-bottom: 30px;
     margin-right: 40px;
@@ -73,13 +81,16 @@ a{
     text-align: center;
     transition: all .2s ease-in-out;
     overflow:hidden;
-    background: linear-gradient(darkred,darkblue,black);
     justify-content:center;
-}
+} */
+
 a img{
+    border: 3px solid white;
     width: 180px;
     image-rendering: optimizeQuality;
 }
+
+/*
 .grid-item:hover{
     border: 3px solid darkred;
     transition: all .2s ease-in-out;
@@ -90,9 +101,7 @@ a img{
     /* background-color: #485461;
     background-image: linear-gradient(315deg, #485461 0%, #28313b 74%); */
 }
-p:hover{
-    color:red;
-}
+*/
 div{
     display:block;
 }
@@ -108,6 +117,7 @@ div{
     background-color: transparent;
     width:77px;
 }
+
 
 .btn-primary{
     /*previous button */
@@ -127,4 +137,23 @@ footer{
 }
 .btn:hover{
     background-color:darkred;
+}
+/*
+.col:hover{
+    /*border: 3px solid darkred; *
+    transition: all .4s ease-in-out;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+    color: red;
+
+}*/
+img:hover{
+    border: 3px solid darkred;
+    transition: all .4s ease-in; 
+    transition: all .4s ease-out; 
+    -webkit-transform: scale(1.1,1,1);
+    /*-webkit-transition-duration:0.4s;
+    -webkit-transition-timing-function: ease-in-ease-out;
+*/
 }

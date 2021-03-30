@@ -1,7 +1,7 @@
 body{
     height:100%;
     background-image:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5)),
-    url("bg_home.jpg");
+    url("https://res.cloudinary.com/diyscwbit/image/upload/v1617113091/restaurant_review/bg_dark_iyv5u9.webp");
     background-size:cover;
     background-attachment:fixed;
     background-position: center;
