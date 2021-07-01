@@ -94,8 +94,8 @@ app.use((req,res,next)=>{
 })
 
 // app.get('/fakeuser',async(req,res)=>{
-//     const user = new User({email:'coltttt@gmail.com',username:'coltttt'});
-//     const newUser = await User.register(user,'chicken')
+//     const user = new User({email:'kag@gmail.com',username:'kag'});
+//     const newUser = await User.register(user,'abcd')
 //     res.send(newUser);
 // })
 
